@@ -22,11 +22,17 @@ function attack(player, enemy) {
     player.AP += 8;
 }
 
-$(".character").one("click", function(){
+$(".character").on("click", function(){
     var x = $(this).detach();
     x.appendTo(".two");
     console.log($(this));
 });
+
+$(".character").off();
+
+
+
+
 
 
 
@@ -42,9 +48,8 @@ $(".character").one("click", function(){
 // var luke = $("#luke");
 // print(luke);
 
-document.onkeyup = function(event) {
+// document.onkeyup = function(event) {
 
-    $(".active").detach();
 
     // if (obiwan.HP > 0 && luke.HP > 0) {
     //     attack(obiwan, luke);
@@ -59,7 +64,7 @@ document.onkeyup = function(event) {
     //     console.log("You Win");
     // }
 
-};
+// };
 
 // var div1 = $("#luke").detach();
 // div1.appendTo(".two");
