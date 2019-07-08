@@ -31,3 +31,6 @@ document.onkeyup = function(event) {
     }
 
 };
+
+var div1 = $("#luke").detach();
+div1.appendTo(".two");
