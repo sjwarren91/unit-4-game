@@ -9,11 +9,22 @@ var luke = new Character("Luke Skywalker", 5, 100);
 var sidious = new Character("Darth Sidious", 25, 180);
 var maul = new Character("Darth Maul", 20, 150);
 
+$("#luke").data(luke);
+
 function attack(player, enemy) {
     player.HP -= enemy.AP;
     enemy.HP -= player.AP;
     player.AP += 8;
 }
+
+// $("#luke").data("info",{name: "Luke Skywalker", AP: 5, HP: 100});
+// $("#obiwan").data("info",{name: "Obi-wan Kenobi", AP: 8, HP: 120});
+
+// function print($player){
+//     console.log($($player).data("info").name)
+// }
+// var luke = $("#luke");
+// print(luke);
 
 document.onkeyup = function(event) {
 
@@ -34,3 +45,6 @@ document.onkeyup = function(event) {
 
 var div1 = $("#luke").detach();
 div1.appendTo(".two");
+
+$("#luke").data(luke);
+$("#test").text($("#luke").data().name);
