@@ -22,16 +22,14 @@ function attack(player, enemy) {
     player.AP += 8;
 }
 
-$(".character").on("click", function(){
-    var x = $(this).detach();
-    x.appendTo(".two");
-    console.log($(this));
+function move(){
+    $(this).detach().appendTo(".two");
+    $(".character").off();
+};
+
+$(document).ready(function(){
+    $(".character").on("click", move);
 });
-
-$(".character").off();
-
-
-
 
 
 
