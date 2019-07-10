@@ -9,7 +9,7 @@ var luke = new Character("Luke Skywalker", 5, 100);
 var sidious = new Character("Darth Sidious", 25, 180);
 var maul = new Character("Darth Maul", 20, 150);
 
-
+var check = false;
 
 $("#luke").data(luke);
 $("#obiwan").data(obiwan);
@@ -22,20 +22,25 @@ function attack(player, enemy) {
     player.AP += 8;
 }
 
-function move(){
-    $(this).detach().appendTo(".two");
+function move() {
+    $(this).detach().appendTo(".player-area");
     $(".character").off();
-};
+    $(this).removeClass("character");
+    $(this).addClass("player");
+    $(".character").detach().appendTo(".enemy-area");
+    $(".character").css("background-color", "red");
+    check = true;
+}
 
-$(document).ready(function(){
+
+
+$(document).ready(function() {
     $(".character").on("click", move);
+    
+    
+
+
 });
-
-
-
-
-
-
 
 // $("#luke").data("info",{name: "Luke Skywalker", AP: 5, HP: 100});
 // $("#obiwan").data("info",{name: "Obi-wan Kenobi", AP: 8, HP: 120});
@@ -48,19 +53,18 @@ $(document).ready(function(){
 
 // document.onkeyup = function(event) {
 
+// if (obiwan.HP > 0 && luke.HP > 0) {
+//     attack(obiwan, luke);
+//     console.log("My Health:", obiwan.HP);
+//     console.log("My Power:", obiwan.AP);
+//     console.log("His Health", luke.HP);
+// }
 
-    // if (obiwan.HP > 0 && luke.HP > 0) {
-    //     attack(obiwan, luke);
-    //     console.log("My Health:", obiwan.HP);
-    //     console.log("My Power:", obiwan.AP);
-    //     console.log("His Health", luke.HP);
-    // }
-    
-    // if (obiwan.HP <= 0) {
-    //     console.log("You Lose");
-    // } else if (luke.HP <= 0) {
-    //     console.log("You Win");
-    // }
+// if (obiwan.HP <= 0) {
+//     console.log("You Lose");
+// } else if (luke.HP <= 0) {
+//     console.log("You Win");
+// }
 
 // };
 
