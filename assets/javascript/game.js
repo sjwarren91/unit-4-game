@@ -1,25 +1,26 @@
-function Character(name, power, health) {
-    this.name = name;
-    this.AP = power;
-    this.HP = health;
-}
+// function Character(name, power, health) {
+//     this.name = name;
+//     this.AP = power;
+//     this.HP = health;
+// }
 
-var obiwan = new Character("Obi-wan Kenobi", 8, 120);
-var luke = new Character("Luke Skywalker", 5, 100);
-var sidious = new Character("Darth Sidious", 25, 180);
-var maul = new Character("Darth Maul", 20, 150);
+// var obiwan = new Character("Obi-wan Kenobi", 8, 120);
+// var luke = new Character("Luke Skywalker", 5, 100);
+// var sidious = new Character("Darth Sidious", 25, 180);
+// var maul = new Character("Darth Maul", 20, 150);
 
-var check = false;
+// var check = false;
 
-$("#luke").data(luke);
-$("#obiwan").data(obiwan);
-$("#sidious").data(sidious);
-$("#maul").data(maul);
+// $("#luke").data(luke);
+// $("#obiwan").data(obiwan);
+// $("#sidious").data(sidious);
+// $("#maul").data(maul);
 
-function attack(player, enemy) {
-    player.HP -= enemy.AP;
-    enemy.HP -= player.AP;
-    player.AP += 8;
+
+
+function attack() {
+    $(".player").data("info").HP -= $(".enemy").data("info").AP;
+    console.log($(".player").data("info").HP);
 }
 
 function moveEnemy(){
@@ -45,8 +46,13 @@ function move() {
 $(document).ready(function() {
     $(".character").on("click", move);
     
-    
+    $(".attack").on("click", attack);
 
+
+    $("#luke").data("info",{name: "Luke Skywalker", AP: 5, HP: 100});
+    $("#obiwan").data("info",{name: "Obi-wan Kenobi", AP: 8, HP: 120});
+    $("#maul").data("info",{name: "Darth Maul", AP: 20, HP: 150});
+    $("#sidious").data("info",{name: "Darth Sidious", AP: 25, HP: 1180});
 
 });
 
@@ -80,4 +86,4 @@ $(document).ready(function() {
 // div1.appendTo(".two");
 
 // $("#luke").data(luke);
-// $("#test").text($("#luke").data().name);
+$("#test").text($("#luke").data().AP);
