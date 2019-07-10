@@ -22,6 +22,13 @@ function attack(player, enemy) {
     player.AP += 8;
 }
 
+function moveEnemy(){
+    $(this).detach().appendTo(".one");
+    $(".character").off();
+    $(this).removeClass("character");
+    $(this).addClass("enemy");
+}
+
 function move() {
     $(this).detach().appendTo(".player-area");
     $(".character").off();
@@ -29,7 +36,8 @@ function move() {
     $(this).addClass("player");
     $(".character").detach().appendTo(".enemy-area");
     $(".character").css("background-color", "red");
-    check = true;
+    $(".character").on("click", moveEnemy);
+    
 }
 
 
