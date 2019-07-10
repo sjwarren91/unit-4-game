@@ -20,6 +20,9 @@
 
 function attack() {
     $(".player").data("info").HP -= $(".enemy").data("info").AP;
+    $(".enemy").data("info").HP -= $(".player").data("info").AP;
+    $(".player").children(".card-footer").text($(".player").data("info").HP);
+    $(".enemy").children(".card-footer").text($(".enemy").data("info").HP);
     console.log($(".player").data("info").HP);
 }
 
