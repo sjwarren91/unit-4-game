@@ -16,7 +16,14 @@
 // $("#sidious").data(sidious);
 // $("#maul").data(maul);
 
+function deathCheck() {
+    if($(".player").data("info").HP <= 0) {
 
+    } else if ($(".enemy").data("info").HP <= 0) {
+        $(".enemy").detach();
+        $(".character").on("click", moveEnemy);
+    }
+}
 
 function attack() {
     $(".player").data("info").HP -= $(".enemy").data("info").AP;
@@ -24,6 +31,7 @@ function attack() {
     $(".player").children(".card-footer").text($(".player").data("info").HP);
     $(".enemy").children(".card-footer").text($(".enemy").data("info").HP);
     console.log($(".player").data("info").HP);
+    deathCheck();
 }
 
 function moveEnemy(){
@@ -41,7 +49,6 @@ function move() {
     $(".character").detach().appendTo(".enemy-area");
     $(".character").css("background-color", "red");
     $(".character").on("click", moveEnemy);
-    
 }
 
 
@@ -55,7 +62,7 @@ $(document).ready(function() {
     $("#luke").data("info",{name: "Luke Skywalker", AP: 5, HP: 100});
     $("#obiwan").data("info",{name: "Obi-wan Kenobi", AP: 8, HP: 120});
     $("#maul").data("info",{name: "Darth Maul", AP: 20, HP: 150});
-    $("#sidious").data("info",{name: "Darth Sidious", AP: 25, HP: 1180});
+    $("#sidious").data("info",{name: "Darth Sidious", AP: 25, HP: 180});
 
 });
 
