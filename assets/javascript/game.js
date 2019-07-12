@@ -1,99 +1,65 @@
-// function Character(name, power, health) {
-//     this.name = name;
-//     this.AP = power;
-//     this.HP = health;
-// }
+var enemyCount = 0;
 
-// var obiwan = new Character("Obi-wan Kenobi", 8, 120);
-// var luke = new Character("Luke Skywalker", 5, 100);
-// var sidious = new Character("Darth Sidious", 25, 180);
-// var maul = new Character("Darth Maul", 20, 150);
-
-// var check = false;
-
-// $("#luke").data(luke);
-// $("#obiwan").data(obiwan);
-// $("#sidious").data(sidious);
-// $("#maul").data(maul);
+function winCheck(){
+    if (enemyCount === 3){
+        $("h1").append("<br>" + "You Win!")
+    }
+}
 
 function deathCheck() {
     if($(".player").data("info").HP <= 0) {
-
+        $("h1").append("<br>" + "You Lose!");
     } else if ($(".enemy").data("info").HP <= 0) {
         $(".enemy").detach();
         $(".character").on("click", moveEnemy);
+        enemyCount++;
     }
+    winCheck();
 }
 
 function attack() {
     $(".player").data("info").HP -= $(".enemy").data("info").AP;
     $(".enemy").data("info").HP -= $(".player").data("info").AP;
-    $(".player").children(".card-footer").text($(".player").data("info").HP);
-    $(".enemy").children(".card-footer").text($(".enemy").data("info").HP);
+    $(".player").data("info").AP += 8;
+    $(".player").children(".hp").text("HP: " + $(".player").data("info").HP);
+    $(".enemy").children(".hp").text("HP: " + $(".enemy").data("info").HP);
     console.log($(".player").data("info").HP);
     deathCheck();
 }
 
 function moveEnemy(){
-    $(this).detach().appendTo(".one");
+    $(this).appendTo(".enemy-area");
     $(".character").off();
     $(this).removeClass("character");
     $(this).addClass("enemy");
 }
 
 function move() {
-    $(this).detach().appendTo(".player-area");
+    $(this).appendTo(".player-area");
     $(".character").off();
     $(this).removeClass("character");
     $(this).addClass("player");
-    $(".character").detach().appendTo(".enemy-area");
     $(".character").css("background-color", "red");
     $(".character").on("click", moveEnemy);
+    $("button").css("visibility", "visible");
 }
-
-
 
 $(document).ready(function() {
     $(".character").on("click", move);
     
     $(".attack").on("click", attack);
 
-
     $("#luke").data("info",{name: "Luke Skywalker", AP: 5, HP: 100});
     $("#obiwan").data("info",{name: "Obi-wan Kenobi", AP: 8, HP: 120});
     $("#maul").data("info",{name: "Darth Maul", AP: 20, HP: 150});
     $("#sidious").data("info",{name: "Darth Sidious", AP: 25, HP: 180});
 
+    $("#luke").children(".hp").text("HP: " + $("#luke").data("info").HP);
+    $("#obiwan").children(".hp").text("HP: " + $("#obiwan").data("info").HP);
+    $("#maul").children(".hp").text("HP: " + $("#maul").data("info").HP);
+    $("#sidious").children(".hp").text("HP: " + $("#sidious").data("info").HP);
+    
+    
+
 });
 
-// $("#luke").data("info",{name: "Luke Skywalker", AP: 5, HP: 100});
-// $("#obiwan").data("info",{name: "Obi-wan Kenobi", AP: 8, HP: 120});
-
-// function print($player){
-//     console.log($($player).data("info").name)
-// }
-// var luke = $("#luke");
-// print(luke);
-
-// document.onkeyup = function(event) {
-
-// if (obiwan.HP > 0 && luke.HP > 0) {
-//     attack(obiwan, luke);
-//     console.log("My Health:", obiwan.HP);
-//     console.log("My Power:", obiwan.AP);
-//     console.log("His Health", luke.HP);
-// }
-
-// if (obiwan.HP <= 0) {
-//     console.log("You Lose");
-// } else if (luke.HP <= 0) {
-//     console.log("You Win");
-// }
-
-// };
-
-// var div1 = $("#luke").detach();
-// div1.appendTo(".two");
-
-// $("#luke").data(luke);
-$("#test").text($("#luke").data().AP);

@@ -1,10 +1,109 @@
+@font-face {
+    font-family: 'star_jediregular';
+    src: url('C://Users/Sam/Desktop/MONASH/Projects/unit-4-game/assets/css/fonts/starjedi-webfont.woff2') format('woff2'),
+         url('C://Users/Sam/Desktop/MONASH/Projects/unit-4-game/assets/css/fonts/starjedi-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 .card-body {
     padding: 0;
 }
 
+button {
+    margin-top: 125px;
+    visibility: hidden;
+}
+
+article {
+    display: inline-block;
+    border: 1px solid black;
+    text-align: center;
+    background-color: white;
+    width: 180px;;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+img {
+    padding: 10px;
+    height: 200px;
+    
+}
+
+p {
+    margin: 0;
+    font-family: "star_jediregular";
+}
+
+.player-area,
+.enemy-area{
+    height: 300px;
+    width: 400px;
+    background-color: blue;
+    position: relative;
+}
+
+.main {
+    margin-left: 300px;
+    position: relative;
+    height: 100vh;
+}
+
+.area {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+h1 {
+    text-align: center;
+}
+
+.player,
+.enemy{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sidebar {
+    text-align: center;
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.character:hover{
+    animation: expand 0.25s linear;
+    animation-fill-mode: both;
+}
+
+@keyframes expand {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.2);
+    }
+}
 /* #obiwan,
 #maul,
 #luke,
 #sidious {
     height: 100px;
 } */
+

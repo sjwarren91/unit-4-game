@@ -15,52 +15,55 @@
 
 <body>
 
-    <div class="row one">
-        <div id="obiwan" class="character card border-success mb-3" style="max-width: 18rem;">
-            <div class="card-header bg-transparent border-success">Header</div>
-            <div class="card-body">
-                
-                <img class="img-fluid" src="assets/images/obiwan1.png" alt="Obiwan">
-            </div>
-            <div class="card-footer bg-transparent border-success">Footer</div>
-        </div>
-        <div id="luke" class="character card border-success mb-3" style="max-width: 18rem;">
-            <div class="card-header bg-transparent border-success">Header</div>
-            <div class="card-body">
-                
-                <img src="assets/images/luke.jpeg" alt="Luke Skywalker">
-            </div>
-            <div class="card-footer bg-transparent border-success">Footer</div>
-        </div>
-        <div id="sidious" class="character card border-success mb-3" style="max-width: 18rem;">
-            <div class="card-header bg-transparent border-success">Header</div>
-            <div class="card-body">
-                
-                <img class="img-fluid" src="assets/images/sidious.jpg" alt="Sidious">
+
+
+    <div class="sidebar">
+        <h2>Choose Your Fighter!</h2>
+        <article id="obiwan" class="character">
+            <p>Obiwan Kenobi</p>
+            <img src="assets/images/obiwan1.png" alt="Obiwan">
+            <p class="hp">HP</p>
+        </article>
+        <article id="luke" class="character">
+            <p>Luke Skywalker</p>
+            <img src="assets/images/luke.jpeg" alt="Luke Skywalker">
+            <p class="hp">HP</p>
+        </article>
+        <article id="sidious" class="character">
+            <p>Darth Sidious</p>
+            <img src="assets/images/sidious.jpg" alt="Sidious">
+            <p class="hp">HP</p>
+        </article>
+        <article id="maul" class="character">
+            <p>Darth Maul</p>
+            <img src="assets/images/maul.png" alt="Darth Maul">
+            <p class="hp">HP</p>
+        </article>
+    </div>
+
+    <div class="main">
+
+        <h1>Star Wars</h1>
+
+        <div class="area">
+
+            <div class="player-area">
 
             </div>
-            <div class="card-footer bg-transparent border-success">Footer</div>
-        </div>
-        <div id="maul" class="character card border-success mb-3" style="max-width: 18rem;">
-            <div class="card-header bg-transparent border-success">Header</div>
-            <div class="card-body">
-                
-                <img class="img-fluid" src="assets/images/maul.png" alt="Darth Maul">
+
+            <div>
+                <button type="button" class="attack">Attack</button>
             </div>
-            <div class="card-footer bg-transparent border-success">Footer</div>
+
+
+
+            <div class="enemy-area">
+
+            </div>
+
         </div>
     </div>
 
-    <div class="row player-area">
-
-    </div>
-
-    <div class="row enemy-area">
-
-    </div>
-
-
-    <button type="button" class="attack">Attack</button>
 
     <p id="test"></p>
 
