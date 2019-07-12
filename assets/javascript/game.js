@@ -1,5 +1,26 @@
 var enemyCount = 0;
 
+function background(){
+    var stars = 500;
+
+    for (let i = 0; i < stars; i++){
+        var star = document.createElement("div")
+        star.className = "star";
+        var pos = getPosition();
+        star.style.top = pos[0] + 'px';
+        star.style.left = pos[1] + 'px';
+        document.body.append(star);
+    }
+
+    function getPosition() {
+        var x = window.innerWidth;
+        var y = window.innerHeight;
+        var ranx = Math.floor(Math.random()*y);
+        var rany = Math.floor(Math.random()*x);
+        return [ranx, rany];
+    }
+}
+
 function winCheck(){
     if (enemyCount === 3){
         $("h1").append("<br>" + "You Win!")
@@ -45,6 +66,8 @@ function move() {
 }
 
 $(document).ready(function() {
+    background();
+
     $(".character").on("click", move);
     
     $(".attack").on("click", attack);
@@ -58,7 +81,6 @@ $(document).ready(function() {
     $("#obiwan").children(".hp").text("HP: " + $("#obiwan").data("info").HP);
     $("#maul").children(".hp").text("HP: " + $("#maul").data("info").HP);
     $("#sidious").children(".hp").text("HP: " + $("#sidious").data("info").HP);
-    
     
 
 });

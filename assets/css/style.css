@@ -7,8 +7,84 @@
 
 }
 
-.card-body {
-    padding: 0;
+body {
+    background-image: radial-gradient(rgb(62, 62, 62) 2%, black 40%);
+    position: relative;
+}
+
+.intro {
+    position: absolute;
+    margin: 0 auto;
+    top: 40%;
+    left: 40%;
+    z-index: 1;
+    animation: intro 6s ease-out 1s;
+    color: rgb(75, 213, 238);
+    opacity: 0;
+    font-size: 200%;
+}
+
+.starWars {
+    font-family: 'star_jediregular';
+    color: black;
+    -webkit-text-stroke: 1px yellow;
+    font-size: 400%;
+    line-height: 1;
+    position: absolute;
+    top: 20%;
+    left: 45%;
+    z-index: 1;
+    margin: auto;
+    animation: starWars 9s ease-out 9s;
+    opacity: 0;
+}
+
+.board {
+    transform: perspective(300px) rotateX(25deg);
+    transform-origin: 50% 100%;
+    text-align: justify;
+    position: absolute;
+    margin-left: -9em;
+    font-weight: bold;
+    overflow: hidden;
+    font-size: 350%;
+    height: 50em;
+    width: 18em;
+    bottom: 0;
+    left: 50%;
+  }
+
+.board:after {
+    position: absolute;
+    content: ' ';
+    bottom: 60%;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+#title, #subtitle {
+    text-align: center;
+}
+
+#content {
+    animation: scroll 50s linear 16s;
+    position: absolute;
+    top: 100%;
+}
+
+.crawl,
+#title,
+#subtitle {
+    font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+    color: #FFFF82;
+}
+
+.star {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background-color: white;
 }
 
 button {
@@ -21,7 +97,7 @@ article {
     border: 1px solid black;
     text-align: center;
     background-color: white;
-    width: 180px;;
+    width: 180px;
     margin: 0 auto;
     border-radius: 10px;
 }
@@ -29,7 +105,6 @@ article {
 img {
     padding: 10px;
     height: 200px;
-    
 }
 
 p {
@@ -46,6 +121,7 @@ p {
 }
 
 .main {
+    visibility: hidden;
     margin-left: 300px;
     position: relative;
     height: 100vh;
@@ -72,6 +148,7 @@ h1 {
 }
 
 .sidebar {
+    visibility: hidden;
     text-align: center;
     height: 100%;
     width: 300px;
@@ -100,10 +177,41 @@ h1 {
         transform: scale(1.2);
     }
 }
-/* #obiwan,
-#maul,
-#luke,
-#sidious {
-    height: 100px;
-} */
 
+@keyframes intro {
+    0% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes starWars {
+    0% {
+        transform: scale(2.75);
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.1);
+    }
+}
+
+@keyframes scroll {
+    0% {
+        top: 100%;
+    }
+    100% {
+        top: -170%;
+    }
+}
