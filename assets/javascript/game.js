@@ -24,17 +24,22 @@ function background(){
 
 function winCheck(){
     if (enemyCount === 3){
-        $("h1").append("<br>" + "You Win!")
+        $("h1").append("<br>" + "You Win!");
+        $(".attack").css("visibility", "hidden");
+        $(".reset").css("visibility", "visible");
     }
 }
 
 function deathCheck() {
     if($(".player").data("info").HP <= 0) {
-        $("h1").append("<br>" + "You Lose!");
+        $("#result").append("You Lose!");
+        $(".attack").css("visibility", "hidden");
+        $(".reset").css("visibility", "visible");
     } else if ($(".enemy").data("info").HP <= 0) {
         $(".enemy").detach();
         $(".character").on("click", moveEnemy);
         enemyCount++;
+        enemySelect = false;
     }
     winCheck();
 }
@@ -48,7 +53,6 @@ function attack() {
         $(".enemy").children(".hp").text("HP: " + $(".enemy").data("info").HP);
         console.log($(".player").data("info").HP);
         deathCheck();
-        enemySelect = true;
     }
 }
 
@@ -57,6 +61,7 @@ function moveEnemy(){
     $(".character").off();
     $(this).removeClass("character");
     $(this).addClass("enemy");
+    enemySelect = true;
 }
 
 function move() {
@@ -66,8 +71,12 @@ function move() {
     $(this).addClass("player");
     $(".character").css("background-color", "red");
     $(".character").on("click", moveEnemy);
-    $("button").css("visibility", "visible");
+    $(".attack").css("visibility", "visible");
     $("h2").text("Choose Your Enemy!")
+}
+
+function reset(){
+    
 }
 
 $(document).ready(function() {
@@ -76,16 +85,18 @@ $(document).ready(function() {
     
     $(".attack").on("click", attack);
 
+    $(".reset").on("click", reset);
+
     $("#luke").data("info",{name: "Luke Skywalker", AP: 5, HP: 100});
     $("#obiwan").data("info",{name: "Obi-wan Kenobi", AP: 8, HP: 120});
-    $("#maul").data("info",{name: "Darth Maul", AP: 20, HP: 150});
-    $("#sidious").data("info",{name: "Darth Sidious", AP: 25, HP: 180});
+    $("#maul").data("info",{name: "Darth Maul", AP: 15, HP: 150});
+    $("#sidious").data("info",{name: "Darth Sidious", AP: 20, HP: 180});
 
     $("#luke").children(".hp").text("HP: " + $("#luke").data("info").HP);
     $("#obiwan").children(".hp").text("HP: " + $("#obiwan").data("info").HP);
     $("#maul").children(".hp").text("HP: " + $("#maul").data("info").HP);
     $("#sidious").children(".hp").text("HP: " + $("#sidious").data("info").HP);
     
-
+    
 });
 

@@ -27,7 +27,7 @@ body {
     font-family: 'star_jediregular';
     color: black;
     -webkit-text-stroke: 1px yellow;
-    font-size: 400%;
+    font-size: 12vh;
     line-height: 1;
     position: absolute;
     top: 20%;
@@ -62,11 +62,6 @@ body {
     top: 0;
 }
 
-#title,
-#subtitle {
-    text-align: center;
-}
-
 #content {
     animation: scroll 50s linear 16s;
     position: absolute;
@@ -80,6 +75,11 @@ body {
     color: #FFFF82;
 }
 
+#title,
+#subtitle {
+    text-align: center;
+}
+
 .star {
     position: absolute;
     width: 1px;
@@ -88,11 +88,45 @@ body {
     z-index: -1;
 }
 
-button {
+.attack {
     margin: 125px 50px 0px 50px;;
     visibility: hidden;
-
+    padding: 7px 20px;
+    border-radius: 10px;
+    text-shadow: -1px -1px 1px rgba(0,0,0,0.8);
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+	border: 5px solid transparent;
+	border-bottom-color: rgba(0,0,0,0.35);
+    background: rgb(248, 224, 4);
+    cursor: pointer;
+    text-transform: uppercase;
 }
+
+.reset {
+    margin: 0px 50px 0px 50px;;
+    visibility: hidden;
+    padding: 7px 20px;
+    border-radius: 10px;
+    text-shadow: -1px -1px 1px rgba(0,0,0,0.8);
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+	border: 5px solid transparent;
+	border-bottom-color: rgba(0,0,0,0.35);
+    background: rgb(248, 224, 4);
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.attack:active{
+    margin-top: 130px;
+    border-bottom-width: 0;
+}
+
+.attack:hover{
+    background: rgb(156, 141, 1);
+}
+
 
 article {
     display: inline-block;
@@ -144,8 +178,8 @@ p {
     margin-left: 300px;
     position: relative;
     height: 100vh;
-    animation: fadein 1s linear 40s;
-    /* animation: fadein 1s linear 2s; */
+    /* animation: fadein 1s linear 40s; */
+    animation: fadein 1s linear 2s;
     animation-fill-mode: both;
 }
 
@@ -188,19 +222,25 @@ h2 {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: rgb(71, 71, 71);
     overflow-x: hidden;
     padding-top: 20px;
     display: flex;
     flex-direction: column;
-    animation: fadein 1s linear 40s;
-    /* animation: fadein 1s linear 2s; */
+    /* animation: fadein 1s linear 40s; */
+    animation: fadein 1s linear 2s;
     animation-fill-mode: both;
 }
 
 .character:hover {
     animation: expand 0.25s linear;
     animation-fill-mode: both;
+}
+
+#result {
+    position: absolute;
+    top: 70%;
+    left: 30%;
 }
 
 @keyframes expand {
@@ -250,6 +290,11 @@ h2 {
 @keyframes scroll {
     0% {
         top: 100%;
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 0;
     }
 
     100% {
