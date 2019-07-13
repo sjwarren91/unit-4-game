@@ -1,4 +1,5 @@
 var enemyCount = 0;
+var enemySelect = false;
 
 function background(){
     var stars = 500;
@@ -39,13 +40,16 @@ function deathCheck() {
 }
 
 function attack() {
-    $(".player").data("info").HP -= $(".enemy").data("info").AP;
-    $(".enemy").data("info").HP -= $(".player").data("info").AP;
-    $(".player").data("info").AP += 8;
-    $(".player").children(".hp").text("HP: " + $(".player").data("info").HP);
-    $(".enemy").children(".hp").text("HP: " + $(".enemy").data("info").HP);
-    console.log($(".player").data("info").HP);
-    deathCheck();
+    if(enemySelect){
+        $(".player").data("info").HP -= $(".enemy").data("info").AP;
+        $(".enemy").data("info").HP -= $(".player").data("info").AP;
+        $(".player").data("info").AP += 8;
+        $(".player").children(".hp").text("HP: " + $(".player").data("info").HP);
+        $(".enemy").children(".hp").text("HP: " + $(".enemy").data("info").HP);
+        console.log($(".player").data("info").HP);
+        deathCheck();
+        enemySelect = true;
+    }
 }
 
 function moveEnemy(){
@@ -63,6 +67,7 @@ function move() {
     $(".character").css("background-color", "red");
     $(".character").on("click", moveEnemy);
     $("button").css("visibility", "visible");
+    $("h2").text("Choose Your Enemy!")
 }
 
 $(document).ready(function() {

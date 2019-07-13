@@ -89,8 +89,9 @@ body {
 }
 
 button {
-    margin-top: 125px;
+    margin: 125px 50px 0px 50px;;
     visibility: hidden;
+
 }
 
 article {
@@ -161,8 +162,7 @@ h1 {
     color: black;
     -webkit-text-stroke: 1px yellow;
     font-family: "star_jediregular";
-    font-size: 400%;
-    
+    font-size: 12vh;
 }
 
 h2 {
