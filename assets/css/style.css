@@ -1,7 +1,6 @@
 @font-face {
     font-family: 'star_jediregular';
-    src: url('C://Users/Sam/Desktop/MONASH/Projects/unit-4-game/assets/css/fonts/starjedi-webfont.woff2') format('woff2'),
-         url('C://Users/Sam/Desktop/MONASH/Projects/unit-4-game/assets/css/fonts/starjedi-webfont.woff') format('woff');
+    src: url('./fonts/starjedi-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
