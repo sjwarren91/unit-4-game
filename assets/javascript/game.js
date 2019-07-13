@@ -8,6 +8,8 @@ var obiwan = {name: "obiwan", AP: 8, HP: 120};
 var maul = {name: "maul", AP: 15, HP: 150};
 var sidious = {name: "sidious", AP: 20, HP: 180};
 var characters = [luke, obiwan, maul, sidious];
+var clash = document.createElement("audio");
+clash.setAttribute("src", "./assets/audio/Lightsaber.mp3");
 
 function charaterGen(){
     luke.AP = 5;
@@ -64,6 +66,7 @@ function deathCheck() {
 }
 
 function attack() {
+    clash.play();
     if(enemySelect){
         player.HP =  player.HP - enemy.AP;
         enemy.HP = enemy.HP - player.AP;

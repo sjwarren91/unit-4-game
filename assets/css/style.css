@@ -6,6 +6,9 @@
 
 }
 
+* {
+    box-sizing: border-box;
+}
 body {
     background-image: radial-gradient(rgb(62, 62, 62) 2%, black 40%);
     position: relative;
@@ -104,7 +107,7 @@ body {
 }
 
 .reset {
-    margin: 0px 50px 0px 50px;;
+    margin: 0px 50px 0px 50px;
     visibility: hidden;
     padding: 7px 20px;
     border-radius: 10px;
@@ -177,8 +180,7 @@ p {
     display: flex;
     flex-direction: column;
     opacity: 0;
-    margin-left: 20vw;
-    margin-bottom: 50px;
+    margin-left: 220px;
     position: relative;
     height: 100vh;
     /* animation: fadein 1s linear 40s; */
@@ -220,7 +222,7 @@ h2 {
     opacity: 1;
     text-align: center;
     height: 100%;
-    width: 20vw;
+    width: 220px;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -315,6 +317,34 @@ h2 {
     }
 }
 
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 1224px) {
+    .player-area,
+    .enemy-area {
+        width: 350px;
+    }
 
+    .buttonbox {
+        width: 150px;
+    }
+    
+    .reset {
+        margin: 0px 20px 0px 20px;
+    }
+
+    .attack {
+        margin: 125px 20px 0px 20px;
+    }
+
+    #result {
+        left: 20%;
+    }
+
+    .intro {
+        left: 33%;
+    }
+
+    .starWars {
+        font-size: 10vh;
+    }
 }
+
