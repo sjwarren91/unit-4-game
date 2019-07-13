@@ -144,8 +144,8 @@ p {
     margin-left: 300px;
     position: relative;
     height: 100vh;
-    /* animation: fadein 1s linear 40s; */
-    animation: fadein 1s linear 2s;
+    animation: fadein 1s linear 40s;
+    /* animation: fadein 1s linear 2s; */
     animation-fill-mode: both;
 }
 
@@ -193,8 +193,8 @@ h2 {
     padding-top: 20px;
     display: flex;
     flex-direction: column;
-    /* animation: fadein 1s linear 40s; */
-    animation: fadein 1s linear 2s;
+    animation: fadein 1s linear 40s;
+    /* animation: fadein 1s linear 2s; */
     animation-fill-mode: both;
 }
 

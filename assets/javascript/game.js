@@ -72,7 +72,6 @@ function move() {
 
 $(document).ready(function() {
     background();
-
     $(".character").on("click", move);
     
     $(".attack").on("click", attack);
