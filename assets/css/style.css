@@ -180,7 +180,7 @@ p {
     display: flex;
     flex-direction: column;
     opacity: 0;
-    margin-left: 220px;
+    margin-left: 300px;
     position: relative;
     height: 100vh;
     animation: fadein 1s linear 40s;
@@ -222,7 +222,7 @@ h2 {
     opacity: 1;
     text-align: center;
     height: 100%;
-    width: 220px;
+    width: 300px;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -345,6 +345,14 @@ h2 {
 
     .starWars {
         font-size: 10vh;
+    }
+
+    .sidebar {
+        width: 200px;
+    }
+
+    .main {
+        margin-left: 300px;
     }
 }
 
