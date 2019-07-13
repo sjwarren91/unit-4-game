@@ -174,8 +174,11 @@ p {
 }
 
 .main {
+    display: flex;
+    flex-direction: column;
     opacity: 0;
-    margin-left: 300px;
+    margin-left: 20vw;
+    margin-bottom: 50px;
     position: relative;
     height: 100vh;
     /* animation: fadein 1s linear 40s; */
@@ -217,7 +220,7 @@ h2 {
     opacity: 1;
     text-align: center;
     height: 100%;
-    width: 300px;
+    width: 20vw;
     position: fixed;
     z-index: 1;
     top: 0;
