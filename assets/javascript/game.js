@@ -3,8 +3,8 @@ var enemySelect
 var player;
 var enemy;
 var replace = [];
-var luke = {name: "luke", AP: 5, HP: 100};
-var obiwan = {name: "obiwan", AP: 8, HP: 120};
+var luke = {name: "luke", AP: 5, HP: 110};
+var obiwan = {name: "obiwan", AP: 9, HP: 135};
 var maul = {name: "maul", AP: 12, HP: 150};
 var sidious = {name: "sidious", AP: 17, HP: 180};
 var characters = [luke, obiwan, maul, sidious];
