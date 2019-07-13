@@ -1,5 +1,24 @@
-var enemyCount = 0;
-var enemySelect = false;
+var enemyCount
+var enemySelect
+var player;
+var enemy;
+var replace = [];
+var luke = {name: "luke", AP: 5, HP: 100};
+var obiwan = {name: "obiwan", AP: 8, HP: 120};
+var maul = {name: "maul", AP: 15, HP: 150};
+var sidious = {name: "sidious", AP: 20, HP: 180};
+var characters = [luke, obiwan, maul, sidious];
+
+function charaterGen(){
+    luke.AP = 5;
+    luke.HP = 100;
+    obiwan.AP = 8;
+    obiwan.HP = 120;
+    maul.AP = 15;
+    maul.HP = 150;
+    sidious.AP = 20;
+    sidious.HP = 180;
+}
 
 function background(){
     var stars = 500;
@@ -31,12 +50,12 @@ function winCheck(){
 }
 
 function deathCheck() {
-    if($(".player").data("info").HP <= 0) {
+    if(player.HP <= 0) {
         $("#result").append("You Lose!");
         $(".attack").css("visibility", "hidden");
         $(".reset").css("visibility", "visible");
-    } else if ($(".enemy").data("info").HP <= 0) {
-        $(".enemy").detach();
+    } else if (enemy.HP <= 0) {
+        replace.push($(".enemy").detach());
         $(".character").on("click", moveEnemy);
         enemyCount++;
         enemySelect = false;
@@ -46,17 +65,22 @@ function deathCheck() {
 
 function attack() {
     if(enemySelect){
-        $(".player").data("info").HP -= $(".enemy").data("info").AP;
-        $(".enemy").data("info").HP -= $(".player").data("info").AP;
-        $(".player").data("info").AP += 8;
-        $(".player").children(".hp").text("HP: " + $(".player").data("info").HP);
-        $(".enemy").children(".hp").text("HP: " + $(".enemy").data("info").HP);
-        console.log($(".player").data("info").HP);
+        player.HP =  player.HP - enemy.AP;
+        enemy.HP = enemy.HP - player.AP;
+        player.AP = player.AP + 8;
+        $(".player").children(".hp").text("HP: " + player.HP);
+        $(".enemy").children(".hp").text("HP: " + enemy.HP);
         deathCheck();
     }
 }
 
 function moveEnemy(){
+    var id = $(this).attr("data-name");
+    for (let i = 0; i < characters.length; i++){
+        if(characters[i].name === id){
+            enemy = characters[i];
+        }
+    }
     $(this).appendTo(".enemy-area");
     $(".character").off();
     $(this).removeClass("character");
@@ -65,6 +89,12 @@ function moveEnemy(){
 }
 
 function move() {
+    var id = $(this).attr("data-name");
+    for (let i = 0; i < characters.length; i++){
+        if(characters[i].name === id){
+            player = characters[i];
+        }
+    }
     $(this).appendTo(".player-area");
     $(".character").off();
     $(this).removeClass("character");
@@ -76,27 +106,35 @@ function move() {
 }
 
 function reset(){
-    
+    $("#luke, #maul, #obiwan, #sidious").appendTo($(".sidebar"));
+    $(".sidebar").append(replace);
+    $(".player").addClass("character");
+    $(".enemy").addClass("character");
+    $(".enemy").removeClass("enemy");
+    $(".player").removeClass("player");
+    $("#result").text("");
+    $(".reset").css("visibility", "hidden");
+    $(".character").on("click", move);
+    newGame();
+}
+
+function newGame(){
+    enemyCount = 0;
+    enemySelect = false;
+    charaterGen();
+    $(".character").css("background-color", "white");
+    $("button").css("visbility", "hidden");
+    $("#luke").children(".hp").text("HP: " + luke.HP);
+    $("#obiwan").children(".hp").text("HP: " + obiwan.HP);
+    $("#maul").children(".hp").text("HP: " + maul.HP);
+    $("#sidious").children(".hp").text("HP: " + sidious.HP);
 }
 
 $(document).ready(function() {
     background();
     $(".character").on("click", move);
-    
     $(".attack").on("click", attack);
-
     $(".reset").on("click", reset);
-
-    $("#luke").data("info",{name: "Luke Skywalker", AP: 5, HP: 100});
-    $("#obiwan").data("info",{name: "Obi-wan Kenobi", AP: 8, HP: 120});
-    $("#maul").data("info",{name: "Darth Maul", AP: 15, HP: 150});
-    $("#sidious").data("info",{name: "Darth Sidious", AP: 20, HP: 180});
-
-    $("#luke").children(".hp").text("HP: " + $("#luke").data("info").HP);
-    $("#obiwan").children(".hp").text("HP: " + $("#obiwan").data("info").HP);
-    $("#maul").children(".hp").text("HP: " + $("#maul").data("info").HP);
-    $("#sidious").children(".hp").text("HP: " + $("#sidious").data("info").HP);
-    
-    
+    newGame();
 });
 
