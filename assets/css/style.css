@@ -158,6 +158,17 @@ p {
 
 h1 {
     text-align: center;
+    color: black;
+    -webkit-text-stroke: 1px yellow;
+    font-family: "star_jediregular";
+    font-size: 400%;
+    
+}
+
+h2 {
+    font-family: "star_jediregular";
+    color: white;
+    text-shadow: 0 4px 8px #487fe6;
 }
 
 .player,
