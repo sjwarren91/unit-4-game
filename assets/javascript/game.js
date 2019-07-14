@@ -1,27 +1,30 @@
-var enemyCount
-var enemySelect
+var enemyCount;
+var enemySelect;
 var player;
 var enemy;
+var baseAP;
 var replace = [];
-var luke = {name: "luke", AP: 5, HP: 110};
-var obiwan = {name: "obiwan", AP: 9, HP: 135};
-var maul = {name: "maul", AP: 12, HP: 150};
-var sidious = {name: "sidious", AP: 17, HP: 180};
+var luke = {name: "luke", baseAP: 5, AP: 5, HP: 110};
+var obiwan = {name: "obiwan", baseAP: 9, AP: 9, HP: 135};
+var maul = {name: "maul", baseAP: 12, AP: 12, HP: 150};
+var sidious = {name: "sidious", baseAP: 17, AP: 17, HP: 180};
 var characters = [luke, obiwan, maul, sidious];
 var clash = document.createElement("audio");
 clash.setAttribute("src", "./assets/audio/Lightsaber.mp3");
 
+//function to reset all characters AP and HP to base
 function charaterGen(){
     luke.AP = 5;
     luke.HP = 100;
-    obiwan.AP = 8;
+    obiwan.AP = 9;
     obiwan.HP = 120;
-    maul.AP = 15;
+    maul.AP = 13;
     maul.HP = 150;
-    sidious.AP = 20;
+    sidious.AP = 17;
     sidious.HP = 180;
 }
 
+//unneccesary function to dynamically create stars cause why not :)
 function background(){
     var stars = 500;
 
@@ -43,14 +46,16 @@ function background(){
     }
 }
 
+//function to check win condition, if three characters beaten you win the game
 function winCheck(){
     if (enemyCount === 3){
-        $("h1").append("<br>" + "You Win!");
+        $("#result").append("You Win!");
         $(".attack").css("visibility", "hidden");
         $(".reset").css("visibility", "visible");
     }
 }
 
+//function to check if you or your opponent has died
 function deathCheck() {
     if(player.HP <= 0) {
         $("#result").append("You Lose!");
@@ -65,18 +70,20 @@ function deathCheck() {
     winCheck();
 }
 
+//function bound to the attack button, will make you and your opponent attack each other
 function attack() {
     clash.play();
     if(enemySelect){
         player.HP =  player.HP - enemy.AP;
         enemy.HP = enemy.HP - player.AP;
-        player.AP = player.AP + 8;
+        player.AP = player.AP + player.baseAP;
         $(".player").children(".hp").text("HP: " + player.HP);
         $(".enemy").children(".hp").text("HP: " + enemy.HP);
         deathCheck();
     }
 }
 
+//function to select enemy and move it to enemy area
 function moveEnemy(){
     var id = $(this).attr("data-name");
     for (let i = 0; i < characters.length; i++){
@@ -91,6 +98,7 @@ function moveEnemy(){
     enemySelect = true;
 }
 
+//function for character selection and move it to player area
 function move() {
     var id = $(this).attr("data-name");
     for (let i = 0; i < characters.length; i++){
@@ -108,6 +116,7 @@ function move() {
     $("h2").text("Choose Your Enemy!")
 }
 
+//function bound to the reset button to reset the play board
 function reset(){
     $("#luke, #maul, #obiwan, #sidious").appendTo($(".sidebar"));
     $(".sidebar").append(replace);
@@ -121,6 +130,7 @@ function reset(){
     newGame();
 }
 
+//function to start new game, called on first load and every reset
 function newGame(){
     enemyCount = 0;
     enemySelect = false;
@@ -133,6 +143,7 @@ function newGame(){
     $("#sidious").children(".hp").text("HP: " + sidious.HP);
 }
 
+//game initialization
 $(document).ready(function() {
     background();
     $(".character").on("click", move);
